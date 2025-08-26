@@ -1,0 +1,8 @@
+<p>contact-list-page works!</p>
+<a routerLink="/">Log in</a>
+
+@for (contacto of contactos; track $index){
+    <p><span>{{contacto}}</span></p>
+} @empty {
+    
+}
