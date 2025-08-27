@@ -1,17 +1,18 @@
 section{
     display: flex;
     flex-direction: column;
+    justify-content: center;
     align-items: center;
-
+    height: 100vh;
 }
 
-
 form{
+    background-color: var(--background-secundary-color);
     display: flex;
     flex-direction: column;
-    width: 160px;
-    border: 2px solid ;
-    padding: 10px
+    padding: 20px;
+    gap: 15px;
+    border-radius: 25px;
 }
 
 input{
@@ -21,7 +22,7 @@ input{
     padding: 10px;
 }
 input::placeholder{
-    color: white;
+    color: var(--font-color);
 }
 
 label{
@@ -34,5 +35,21 @@ img{
     height: auto;
     display: inline-block;
 }
+
+.checkbox{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+}
+
+button{
+    background-color: var(--boton-color);
+    border-radius: 25px;
+    padding: 10px;
+    border: none;
+}
+
+
 
 
