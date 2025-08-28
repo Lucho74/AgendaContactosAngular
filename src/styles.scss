@@ -52,16 +52,33 @@ a{
 
 
 /* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
+
 :root{
-    --background-primary-color: #F8F3D9;
-    --background-secundary-color:#EBE5C2;
+    --background-primary-color: #33a4d4;
+    // --background-primary-color: #F8F3D9;
+    --background-secundary-color:#fff7df;
+    // --background-secundary-color:#EBE5C2;
     --color1: #447dc4;
-    --boton-color: #B9B28A;
-	--font-color:  black;
-	--font: 
+    --boton-color: #7fa4b5;
+    // --boton-color: #B9B28A;
+	--font-color:  #000000;
+	--font: "Open Sans", sans-serif;
+	--font-weight: 500;
+	--font-size: 16px;
+	--font-size-h1: 32px;
+
+
+	--width-not-logged: 300px;
+
 }
 
 body{
     background-color: var(--background-primary-color);
-	font-family: open-sans;
+	color: var(--font-color);
+	font-family: var(--font);
+	font-weight: var(--font-weight);
 }
+
+
+
