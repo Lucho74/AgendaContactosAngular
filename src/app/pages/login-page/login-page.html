@@ -1,26 +1,30 @@
 <section>
-    <div class="bg-left lado">
-        <h1>Iniciar sesión</h1>
+        <h1>Agenda de contactos</h1>
         <form>
-            <label>
-                <img src="img/user.png" alt="" width="24" height="24">
-                <input id="nombreUsuario" type="text" placeholder="Usuario">
-            </label>
-            <label for="">
-                <img src="img/password.png" alt="" width="24" height="24">
-                <input id="password" type="password" placeholder="Contraseña">
-            </label>
-            <label class="checkbox">
-                <input type="checkbox" placeholder="Recordar">
-                <span>Recordar cuenta</span>
-            </label>
-            <button>Iniciar sesión</button>
-            <p>No tenés cuenta? <a routerLink="/register">Registrate</a></p>
+            <h2>Iniciar sesión</h2>
+            <div>
+                <label>
+                    <!-- <img src="img/user.png" alt="" width="24" height="24"> -->
+                    <input class="input-text" type="text" placeholder="Usuario o email">
+                </label>
+                <label>
+                    <!-- <img src="img/password.png" alt="" width="24" height="24"> -->
+                    <input class="input-text" type="password" placeholder="Contraseña">
+                </label>
+                <p class="p-error">ERROR</p>
+            </div>
+            <div>
+                <div id="a">
+                    <label class="label-checkbox">
+                        <input class="input-checkbox" type="checkbox">
+                        <span class="checkbox-text">Recordar cuenta</span>
+                    </label>
+                    <p>¿Olvidaste tu contraseña? <a routerLink="/register">Recuperar cuenta</a></p>
+                </div>
+                <button>Acceder</button>
+                <p>¿No tienes cuenta? <a routerLink="/register">Registrate</a></p>
+            </div>
         </form>
-        <a routerLink="/">Contact list</a>
-    </div>
-    <div class="bg-right lado">
-    </div>
 </section>
 
 

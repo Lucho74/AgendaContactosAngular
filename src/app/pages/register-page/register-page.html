@@ -1,24 +1,22 @@
 <section>
-    <div class="bg-left lado">
-        <h1>Registrate</h1>
+        <h1>Agenda de contactos</h1>
         <form>
-            <label>
-                <img src="img/user.png" alt="" width="24" height="24">
-                <input id="nombreUsuario" type="text" placeholder="Usuario">
-            </label>
-            <label for="">
-                <img src="img/password.png" alt="" width="24" height="24">
-                <input id="password" type="password" placeholder="Contraseña">
-            </label>
-            <label for="">
-                <img src="img/password.png" alt="" width="24" height="24">
-                <input id="password" type="password" placeholder="Repetir contraseña">
-            </label>
-            <button>Registrarse</button>
-            <p>Ya tenés cuenta? <a routerLink="/login">Iniciar Sesion</a></p>
+            <h2>Registrarse</h2>
+            <div>
+                <label>
+                    <input class="input-text" type="text" placeholder="Email">
+                </label>
+                <label>
+                    <input class="input-text" type="password" placeholder="Contraseña">
+                </label>
+                <label>
+                    <input class="input-text" type="password" placeholder="Repetir contraseña">
+                </label>
+                <p class="p-error">ERROR</p>
+            </div>
+            <div>
+                <button>Crear cuenta</button>
+                <p>¿Ya tenés cuenta? <a routerLink="/login">Iniciar sesión</a></p>
+            </div>
         </form>
-        <a routerLink="/">Contact list</a>
-    </div>
-    <div class="bg-right lado">
-    </div>
 </section>

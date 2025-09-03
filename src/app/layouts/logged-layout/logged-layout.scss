@@ -1,0 +1,10 @@
+section{
+    display: flex;
+    height: 100vh;
+}
+
+nav{
+    background-color: var(--nav-bar-left-color);
+    display: flex;
+    flex-direction: column;
+}

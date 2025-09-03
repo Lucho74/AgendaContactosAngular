@@ -53,23 +53,37 @@ a{
 
 /* You can add global styles to this file, and also import other style files */
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
 
 :root{
-    --background-primary-color: #33a4d4;
+    --background-primary-color: #e4f7f3;
     // --background-primary-color: #F8F3D9;
-    --background-secundary-color:#fff7df;
+    --background-secundary-color: #ffffff;
     // --background-secundary-color:#EBE5C2;
-    --color1: #447dc4;
-    --boton-color: #7fa4b5;
+    --button-primary-color: #018075;
+    --button-primary-hover-color: #018a7e;
+    --button-primary-active-color: #018075;
+	--button-secundary-color: #dcf1ee;
     // --boton-color: #B9B28A;
-	--font-color:  #000000;
-	--font: "Open Sans", sans-serif;
+	--nav-bar-top-color: #f0f4f7;
+	--nav-bar-left-color: #00998f;
+	--input-text-bar: #fafafa;
+	--font-color:black;
+	--font-button-primary-color: #dcf1ee;
+	--font-button-primary-active-color: #dcf1eec1;
+	--font-button-secundary-color: #018075;
+	--font: "Inter";
+	// --font: "Open Sans", sans-serif;
 	--font-weight: 500;
-	--font-size: 16px;
+	--font-size: 14px;
 	--font-size-h1: 32px;
+	--font-size-h2: 20px;
+	--font-size-p: 12px;
+	--font-size-checkbox: 12px;
+	--border-radius: 12px;
 
 
-	--width-not-logged: 300px;
+	--width-not-logged: 400px;
 
 }
 

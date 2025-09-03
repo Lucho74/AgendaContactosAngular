@@ -1,0 +1,19 @@
+section{
+    display: flex;
+    height: 100vh;
+}
+
+nav{
+    display: flex;
+    flex-direction: column;
+    background-color: var(--nav-bar-left-color);
+    padding: 10px 10px;
+    gap: 5px;
+}
+
+nav a{
+    color: var(--font-button-secundary-color);
+    background-color: var(--button-secundary-color);
+    border-radius: var(--border-radius);
+    padding: 10px 24px;
+}
