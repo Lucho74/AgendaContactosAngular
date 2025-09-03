@@ -1,7 +1,9 @@
-<p>Contacto N° {{index()+1}} {{contacto()}}
-    @if(esFavorito()){
+<p>Contacto N° {{index()+1}} {{contact().firstName}}
+    @if(contact().isFavorite){
         ESTRELLA
     }
 </p>
+<button (click)="contactsService.deleteContact(contact().id)">borrar</button>
+
 
 
