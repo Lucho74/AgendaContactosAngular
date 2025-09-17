@@ -1,8 +1,7 @@
 import { Component, inject } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, NgForm } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { UsersService } from '../../services/users-service';
-import { FormUser } from '../../interfaces/user';
 
 @Component({
   selector: 'app-register-page',
@@ -12,17 +11,38 @@ import { FormUser } from '../../interfaces/user';
 })
 export class RegisterPage {
 
-  usersService = inject(UsersService)
+  isLoading = false;
+  errorRegister = false;
 
-  registerUser(form: any) {
-    const user: FormUser = {
-      firstName: form.firstName,
-      lastName: form.lastName,
-      email: form.email,
-      password: form.password,
-      password2: form.password2,
+  userService = inject(UsersService);
+
+  async registerUser(form: NgForm) {
+    console.log(form.value)
+    this.errorRegister = false;
+    if (
+      !form.value.firstName ||
+      !form.value.lastName ||
+      !form.value.email ||
+      !form.value.password ||
+      !form.value.password2 ||
+      form.value.password !== form.value.password2
+    ) {
+      this.errorRegister = true;
+      return;
     }
-    this.usersService.registerUser(user)
-  }
 
+    this.isLoading = true;
+    const ok = await this.userService.registerUser({
+      firstName: form.value.firstName,
+      lastName: form.value.lastName,
+      email: form.value.email,
+      password: form.value.password,
+    });
+    this.isLoading = false;
+
+    if (!ok) {
+      this.errorRegister = true;
+    }
+
+  }
 }

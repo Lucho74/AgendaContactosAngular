@@ -1,9 +1,10 @@
 import { Component, inject } from '@angular/core';
-import { FormsModule } from '@angular/forms';
-import { RouterModule } from '@angular/router';
+import { FormsModule, NgForm } from '@angular/forms';
+import { Router, RouterModule } from '@angular/router';
 import { User } from '../../interfaces/user';
 import { UsersService } from '../../services/users-service';
 import { CommonModule } from '@angular/common';
+import { AuthService } from '../../services/auth-service';
 
 @Component({
   selector: 'app-login-page',
@@ -13,15 +14,22 @@ import { CommonModule } from '@angular/common';
 })
 export class LoginPage {
 
-  usersService = inject(UsersService)
+  authService = inject(AuthService)
+  router = inject(Router)
 
-  loginUser(form:any){
-    const user: User = {
-      email: form.email,
-      password: form.password
+  errorLogin = false;
+
+  async login(form: NgForm) {
+    console.log(form.value)
+    this.errorLogin = false;
+    if (!form.value.email || !form.value.password) {
+      this.errorLogin = true;
+      return
     }
-    this.usersService.loginUser(user)
-  }
+    const loginResult = await this.authService.login(form.value);
+    if (loginResult) this.router.navigate(["/"]);
+    this.errorLogin = true;
 
-  
+
+  }
 }

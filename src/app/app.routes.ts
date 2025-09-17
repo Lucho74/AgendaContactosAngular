@@ -3,24 +3,29 @@ import { LoginPage } from './pages/login-page/login-page';
 import { ContactListPage } from './pages/contact-list-page/contact-list-page';
 import { ContactDetailsPage } from './pages/contact-details-page/contact-details-page';
 import { RegisterPage } from './pages/register-page/register-page';
-import { LoggedLayout } from './layouts/logged-layout/logged-layout';
 import { NavBarTopLayout } from './layouts/nav-bar-top-layout/nav-bar-top-layout';
 import { NavBarLeftLayout } from './layouts/nav-bar-left-layout/nav-bar-left-layout';
 import { GroupListPage } from './pages/group-list-page/group-list-page';
+import { onlyUserGuard } from './guards/only-user-guard';
+import { onlyPublicGuard } from './guards/only-public-guard';
 
 export const routes: Routes = [
     
     {
         path:"login",
-        component: LoginPage
+        component: LoginPage,
+        canActivate: [onlyPublicGuard]
     },
     {
         path:"register",
-        component: RegisterPage
+        component: RegisterPage,
+        canActivate: [onlyPublicGuard]
+
     },
     {
         path:"",
         component: NavBarTopLayout,
+        canActivateChild: [onlyPublicGuard],
         children: [
             {
                 path:"",

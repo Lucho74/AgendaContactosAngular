@@ -2,7 +2,7 @@
     <h1>Agenda de contactos</h1>
     <div class="login-container flex-column">
         <h2>Iniciar sesión</h2>
-        <form (ngSubmit)="loginUser(loginUserForm.value)" #loginUserForm="ngForm">
+        <form (ngSubmit)="login(loginUserForm.value)" #loginUserForm="ngForm">
             <div>
                 <label for="email" class="visually-hidden">Email</label>
                 <input type="email" id="email" name="email" placeholder="Email" ngModel required #email="ngModel">
