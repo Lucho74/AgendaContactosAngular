@@ -1,6 +1,6 @@
 <section>
     <h1>Agenda</h1>
     <input type="search" name="" id="">
-    <a routerLink="/login">Iniciar sesión</a>
+    <button (click)="authService.logout()">Cerrar sesión</button>
 </section>
     <router-outlet/>

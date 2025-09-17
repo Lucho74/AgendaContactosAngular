@@ -25,7 +25,7 @@ export const routes: Routes = [
     {
         path:"",
         component: NavBarTopLayout,
-        canActivateChild: [onlyPublicGuard],
+        canActivateChild: [onlyUserGuard],
         children: [
             {
                 path:"",
