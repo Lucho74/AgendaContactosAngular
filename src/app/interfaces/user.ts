@@ -1,14 +1,22 @@
 export interface NewUser {
-    Id: number,
-    FirstName: string,
-    LastName: string,
-    Email: string,
-    Password: string
+    id: number,
+    firstName: string,
+    lastName: string,
+    email: string,
+    password: string
 }
 
-export interface User{
-    Email: string,
-    Password: string
+export interface User {
+    email: string,
+    password: string
+}
+
+export interface FormUser {
+    firstName: string;
+    lastName: string;
+    email: string;
+    password: string;
+    password2: string;
 }
 
 

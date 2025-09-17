@@ -1,6 +1,4 @@
 section{
-    display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
     width: 100%;
@@ -17,20 +15,17 @@ h2{
     font-size: var(--font-size-h2);
 }
 
-form{
+.login-container{
     background-color: var(--background-secundary-color);
-    display: flex;
-    flex-direction: column;
     width: var(--width-not-logged);
     padding: 60px 35px;
     gap: 30px;
     border-radius: var(--border-radius);
     box-shadow: 0px 0px 20px 1px #b6b6b6;
 }
-form div{
+.flex-column{
     display: flex;
     flex-direction: column;
-    gap: 15px;
 }
 
 label{
@@ -49,12 +44,12 @@ input{
 input::placeholder{
     font-size: var(--font-size);
 }
-.input-text{
+input[type="email"], input[type="password"]{
     width: 100%;
     box-shadow: 0 2px var(--button-secundary-color);
     transition: box-shadow 0.3s ease;
 }
-.input-text:focus{
+input[type="email"]:focus, input[type="password"]:focus{
     outline: none;
     box-shadow: 0 2px var(--button-primary-color);
 
@@ -67,7 +62,7 @@ img{
     display: inline-block;
 }
 
-.label-checkbox{
+.checkbox-container{
     display: flex;
     justify-content: end;
     align-items: center;
@@ -75,7 +70,7 @@ img{
     font-size: var(--font-size-checkbox);
     width: auto;
 }
-.input-checkbox {
+input[type="checkbox"] {
     accent-color: var(--button-primary-color);
     margin: 0;
 }
@@ -104,15 +99,11 @@ p{
 }
 
 .p-error{
-    visibility: hidden
+    text-align: start;
+    color: red;
+    height: 12px;
 }
 
-#a{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-}
 
 
 

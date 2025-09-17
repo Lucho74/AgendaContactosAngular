@@ -1,30 +1,31 @@
-<section>
-        <h1>Agenda de contactos</h1>
-        <form>
-            <h2>Iniciar sesión</h2>
+<section class="flex-column">
+    <h1>Agenda de contactos</h1>
+    <div class="login-container flex-column">
+        <h2>Iniciar sesión</h2>
+        <form (ngSubmit)="loginUser(loginUserForm.value)" #loginUserForm="ngForm">
             <div>
-                <label>
-                    <!-- <img src="img/user.png" alt="" width="24" height="24"> -->
-                    <input class="input-text" type="text" placeholder="Usuario o email">
-                </label>
-                <label>
-                    <!-- <img src="img/password.png" alt="" width="24" height="24"> -->
-                    <input class="input-text" type="password" placeholder="Contraseña">
-                </label>
-                <p class="p-error">ERROR</p>
+                <label for="email" class="visually-hidden">Email</label>
+                <input type="email" id="email" name="email" placeholder="Email" ngModel required #email="ngModel">
             </div>
             <div>
-                <div id="a">
-                    <label class="label-checkbox">
-                        <input class="input-checkbox" type="checkbox">
-                        <span class="checkbox-text">Recordar cuenta</span>
-                    </label>
-                    <p>¿Olvidaste tu contraseña? <a routerLink="/register">Recuperar cuenta</a></p>
-                </div>
+                <label for="password" class="visually-hidden">Contraseña</label>
+                <input type="password" id="password" name="password" placeholder="Contraseña" ngModel required
+                    #password="ngModel" minlength="8">
+            </div>
+            <p class="p-error">
+                @if((email.dirty && email.invalid) || (password.dirty && password.invalid)){
+                Email o contraseña invalido
+                }
+            </p>
+            <div class="checkbox-container">
+                <input type="checkbox" id="remember">
+                <label for="remember">Recordar cuenta</label>
+            </div>
+            <div class="flex-column">
                 <button>Acceder</button>
-                <p>¿No tienes cuenta? <a routerLink="/register">Registrate</a></p>
             </div>
         </form>
+        <p>¿Olvidaste tu contraseña? <a routerLink="/register">Recuperar cuenta</a></p>
+        <p>¿No tienes cuenta? <a routerLink="/register">Registrate</a></p>
+    </div>
 </section>
-
-

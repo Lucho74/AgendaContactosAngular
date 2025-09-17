@@ -9,6 +9,7 @@ export class ContactsService {
   contacts:Contact[] = []
 
   createContact(newContact: NewContact){
+    console.log(newContact)
     const contact:Contact = {
       ...newContact,
       id: Math.random(),
