@@ -1,10 +1,11 @@
 <p>Contacto N° {{index()+1}} {{contact().firstName}} {{contact().lastName}}
-    @if(contact().isFavorite){
-        ESTRELLA
-    }
+    <span (click)="">
+        @if(contact().isFavorite){
+        ✮
+        } @else {
+        ☆
+        }
+    </span>
 </p>
 <button (click)="contactsService.deleteContact(contact().id)">borrar</button>
-<a [routerLink]="['./details', contact().id]">detalle</a>
-    
-
-
+<a [routerLink]="['/contacts', contact().id, 'details']">detalles</a>

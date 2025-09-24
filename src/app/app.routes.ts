@@ -39,7 +39,7 @@ export const routes: Routes = [
                         component: ContactListPage,
                         children: [
                             {
-                                path:"details/:id",
+                                path:":idContact/details",
                                 component: ContactDetailsPage
                             },
                             {

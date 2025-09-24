@@ -3,8 +3,14 @@
         <a routerLink="/contacts">X</a>
     </div>
     <div>
-        <p>nombre: </p>
-        <p>{{contact().firstName}}</p>
+        <img src={{contactBack?.image}} alt="">
+        <p>Nombre: {{contactBack?.firstName}}</p>
+        <p>Apellido: {{contactBack?.lastName}}</p>
+        <p>Compañia: {{contactBack?.company}}</p>
+        <p>Numero: {{contactBack?.number}}</p>
+        <p>Email: {{contactBack?.email}}</p>
+        <p>Dirección: {{contactBack?.address}}</p>
+        <p>Contacto ID: {{idContact()}}</p>
     </div>
 </section>
 
