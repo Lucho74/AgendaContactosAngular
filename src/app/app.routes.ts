@@ -8,6 +8,7 @@ import { NavBarLeftLayout } from './layouts/nav-bar-left-layout/nav-bar-left-lay
 import { GroupListPage } from './pages/group-list-page/group-list-page';
 import { onlyUserGuard } from './guards/only-user-guard';
 import { onlyPublicGuard } from './guards/only-public-guard';
+import { AddContactPage } from './pages/add-contact-page/add-contact-page';
 
 export const routes: Routes = [
     
@@ -16,6 +17,7 @@ export const routes: Routes = [
         component: LoginPage,
         canActivate: [onlyPublicGuard]
     },
+    
     {
         path:"register",
         component: RegisterPage,
@@ -33,12 +35,18 @@ export const routes: Routes = [
                 children: [
                     {
                         // Path vacío se abre cuando la pagina no tiene url más que localhost
-                        path:"",
-                        component: ContactListPage
-                    },
-                    {
-                        path:"contacts/:id",
-                        component: ContactDetailsPage
+                        path:"contacts",
+                        component: ContactListPage,
+                        children: [
+                            {
+                                path:"details/:id",
+                                component: ContactDetailsPage
+                            },
+                            {
+                                path:"add",
+                                component: AddContactPage
+                            },
+                        ]
                     },
                     {
                         path:"groups",

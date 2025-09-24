@@ -1,10 +1,12 @@
 import { Component, inject, input } from '@angular/core';
 import { Contact } from '../../interfaces/contact';
 import { ContactsService } from '../../services/contacts-service';
+import { RouterModule } from '@angular/router';
+import { ContactDetailsPage } from "../../pages/contact-details-page/contact-details-page";
 
 @Component({
   selector: 'app-contact-list-item',
-  imports: [],
+  imports: [RouterModule, ContactDetailsPage],
   templateUrl: './contact-list-item.html',
   styleUrl: './contact-list-item.scss'
 })

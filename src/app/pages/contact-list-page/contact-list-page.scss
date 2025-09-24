@@ -1,6 +1,17 @@
-.add-contact-button{
+section {
+    display: flex;
+    height: 100vh;
+    gap: 30px;
+}
+
+.add-contact-button {
     position: absolute;
-    top: 20px;
+    bottom: 15px;
     right: 20px;
-    index: 0, 0; 
+    z-index: 10;
+}
+
+.contacts .details {
+    
+
 }

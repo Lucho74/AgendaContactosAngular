@@ -12,7 +12,7 @@ export class ContactsService {
     console.log(newContact)
     const contact:Contact = {
       ...newContact,
-      id: Math.random(),
+      id: Math.trunc(Math.random() * 10),
       isFavorite: false
     }
     this.contacts.push(contact)
@@ -21,6 +21,9 @@ export class ContactsService {
   deleteContact(id: number){
     this.contacts = this.contacts.filter(contact => contact.id !== id);
   }
-  getContacts(){}
+  getContacts(contact: Contact){
+    this.contacts
+  }
+
 
 }

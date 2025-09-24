@@ -1,40 +1,18 @@
-<p>contact-list-page works!</p>
-<a routerLink="/login">Log in</a>
+<section>
+    <div class="contacts">
+        <p>contact-list-page works!</p>
+        
+        @for (contact of contactsService.contacts; track $index) {
+        <app-contact-list-item [contact]="contact" [index]="$index" />
+        } @empty {
+        <p>No hay contactos</p>
+        }
+        <a routerLink="/add-contact">++</a>
+        <div class="add-contact-button-container">
+            <a class="add-contact-button" routerLink="./add">+</a>
+        </div>
+    </div>
+    <router-outlet/>
 
-@for (contact of contactsService.contacts; track $index) {
-<app-contact-list-item [contact]="contact" [index]="$index" />
-} @empty {
-<p>No hay contactos</p>
-}
-<form (ngSubmit)="createContact(newContactForm.value)" #newContactForm="ngForm">
-    <div>
-        <label for="first-name">Nombre*</label>
-        <input type="text" name="firstName" id="first-name" ngModel required="true" maxlength="50" #firstName="ngModel">
-        @if (firstName.dirty && firstName.invalid) {
-        <p class="error">El nombre es obligatorio</p>
-        }
-    </div>
-    <div>
-        <label for="last-name">Apellido</label>
-        <input type="text" name="lastName" id="last-name" ngModel maxlength="50">
-    </div>
-    <div>
-        <label for="email">Email</label>
-        <input type="text" name="email" id="email" ngModel maxlength="50">
-    </div>
-    <div>
-        <label for="address">Dirección</label>
-        <input type="text" name="address" id="address" ngModel maxlength="50">
-    </div>
-    <div>
-        <label for="number">Telefono*</label>
-        <input type="text" name="number" id="number" ngModel maxlength="50" required="true" minlength="4" #phone="ngModel">
-        @if (phone.dirty && phone.invalid) {
-        <p class="error">El telefono es obligatorio y tiene que tener al menos 4 caracteres y no mas de 50</p>
-        }
-    </div>
-    <button>aaa</button>
-    <div class="add-contact-button-container">
-        <button class="add-contact-button">+</button>
-    </div>
-</form>
+
+</section>
