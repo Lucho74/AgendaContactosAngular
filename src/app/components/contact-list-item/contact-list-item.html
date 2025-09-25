@@ -1,5 +1,5 @@
 <p>Contacto N° {{index()+1}} {{contact().firstName}} {{contact().lastName}}
-    <span (click)="">
+    <span (click)="markUnmarkFavorite()">
         @if(contact().isFavorite){
         ✮
         } @else {
