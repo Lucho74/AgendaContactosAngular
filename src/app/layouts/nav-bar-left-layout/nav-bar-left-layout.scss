@@ -1,12 +1,8 @@
 section{
     display: flex;
     height: 100vh;
-    overflow: hidden;
 }
 
-.a{
-    width: 100%;
-}
 .nav-bar-section{
     display: flex;
     flex-direction: column;
@@ -59,8 +55,9 @@ nav {
 
 }
 
-.router-outlet{
-
+.main-section{
+    width: 100%;
+    height: 100%;
 }
 
 

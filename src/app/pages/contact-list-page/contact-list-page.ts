@@ -1,10 +1,11 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, OnInit, ViewChild } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { ContactListItem } from '../../components/contact-list-item/contact-list-item';
 import { ContactsService } from '../../services/contacts-service';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { Contact } from '../../interfaces/contact';
+import { ActionsService } from '../../services/actions-service';
 
 @Component({
   selector: 'app-contact-list-page',
@@ -13,7 +14,8 @@ import { Contact } from '../../interfaces/contact';
   styleUrl: './contact-list-page.scss'
 })
 export class ContactListPage implements OnInit {
-
+  
+  actionsService = inject(ActionsService)
   contactsService = inject(ContactsService)
   addContact = false
   contacts: Contact[] | void= []
@@ -29,6 +31,24 @@ async ngOnInit() {
   hiddenAddContact() {
     this.addContact = false
   }
+
+  // showRightBox = false;
+  
+  showRightBox = this.actionsService.showRightBox
+  toggleRightBox() {
+    this.actionsService.toggleRightBox();
+    this.showRightBox = this.actionsService.showRightBox
+    console.log(this.showRightBox);
+    
+  }
+
+
+
+
+
+
+  
+
 
 
 
