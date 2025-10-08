@@ -3,7 +3,6 @@ import { LoginPage } from './pages/login-page/login-page';
 import { ContactListPage } from './pages/contact-list-page/contact-list-page';
 import { ContactDetailsPage } from './pages/contact-details-page/contact-details-page';
 import { RegisterPage } from './pages/register-page/register-page';
-import { NavBarTopLayout } from './layouts/nav-bar-top-layout/nav-bar-top-layout';
 import { NavBarLeftLayout } from './layouts/nav-bar-left-layout/nav-bar-left-layout';
 import { GroupListPage } from './pages/group-list-page/group-list-page';
 import { onlyUserGuard } from './guards/only-user-guard';
@@ -11,48 +10,42 @@ import { onlyPublicGuard } from './guards/only-public-guard';
 import { AddContactPage } from './pages/add-contact-page/add-contact-page';
 
 export const routes: Routes = [
-    
+
     {
-        path:"login",
+        path: "login",
         component: LoginPage,
         canActivate: [onlyPublicGuard]
     },
-    
+
     {
-        path:"register",
+        path: "register",
         component: RegisterPage,
         canActivate: [onlyPublicGuard]
 
     },
     {
-        path:"",
-        component: NavBarTopLayout,
-        canActivateChild: [onlyUserGuard],
+        path: "",
+        component: NavBarLeftLayout,
+        canActivate: [onlyUserGuard],
         children: [
             {
-                path:"",
-                component: NavBarLeftLayout,
+                // Path vacío se abre cuando la pagina no tiene url más que localhost
+                path: "contacts",
+                component: ContactListPage,
                 children: [
                     {
-                        // Path vacío se abre cuando la pagina no tiene url más que localhost
-                        path:"contacts",
-                        component: ContactListPage,
-                        children: [
-                            {
-                                path:":idContact/details",
-                                component: ContactDetailsPage
-                            },
-                            {
-                                path:"add",
-                                component: AddContactPage
-                            },
-                        ]
+                        path: ":idContact/details",
+                        component: ContactDetailsPage
                     },
                     {
-                        path:"groups",
-                        component: GroupListPage
-                    }
+                        path: "add",
+                        component: AddContactPage
+                    },
                 ]
+            },
+            {
+                path: "groups",
+                component: GroupListPage
             }
         ]
     },

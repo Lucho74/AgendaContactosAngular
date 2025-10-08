@@ -1,19 +1,66 @@
 section{
     display: flex;
     height: 100vh;
+    overflow: hidden;
 }
 
-nav{
+.a{
+    width: 100%;
+}
+.nav-bar-section{
     display: flex;
     flex-direction: column;
+    align-items: center;
     background-color: var(--nav-bar-left-color);
-    padding: 10px 10px;
-    gap: 5px;
+    width: 200px;
+    padding: 5vh 2vw;
 }
 
-nav a{
-    color: var(--font-button-secundary-color);
-    background-color: var(--button-secundary-color);
-    border-radius: var(--border-radius);
-    padding: 10px 24px;
+h1{
+    font-size: 24px;
 }
+
+.nav-container{
+    width: 100%;
+    margin: 20px 0px;
+}
+nav {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+.nav-divisor{
+    color: var(--font-nav-divisor-color);
+    font-size: 14px;
+    padding: 10px 0px 10px 0px;
+    margin-top: 10px;
+    border-top: 1px solid var(--font-nav-divisor-color);
+}
+.nav-item{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px;
+    border-radius: var(--border-radius);
+    fill: var(--font-button-primary-color);
+    transition: background-color 0.1s ease;
+}
+
+.nav-item:hover{
+    background-color: var(--button-primary-color);
+}
+
+.nav-item.active{
+    background-color: var(--button-primary-color);
+}
+
+.nav-container a{
+    color: var(--font-button-primary-color);
+
+}
+
+.router-outlet{
+
+}
+
+
