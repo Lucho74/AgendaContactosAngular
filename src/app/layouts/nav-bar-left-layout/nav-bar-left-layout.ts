@@ -1,7 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { RouterModule, } from '@angular/router';
 import { AuthService } from '../../services/auth-service';
-
+import Swal from 'sweetalert2';
 @Component({
   selector: 'app-nav-bar-left-layout',
   imports: [ RouterModule ],
@@ -10,4 +10,20 @@ import { AuthService } from '../../services/auth-service';
 })
 export class NavBarLeftLayout {
   authService = inject(AuthService)
+
+  showLogoutModal(){
+    Swal.fire({
+      title: "",
+      showDenyButton: false,
+      showCancelButton: true,
+      confirmButtonColor: "red",
+      cancelButtonText: "Cancelar",
+      confirmButtonText: "Cerrar sesión",
+    }).then((result) => {
+      /* Read more about isConfirmed, isDenied below */
+      if (result.isConfirmed) {
+        this.authService.logout()
+      }
+    });
+  }
 }
