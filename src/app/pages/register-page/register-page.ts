@@ -12,25 +12,24 @@ import { UsersService } from '../../services/users-service';
 export class RegisterPage {
 
   isLoading = false;
-  errorRegister = false;
+  errorRegisterService = false;
+  errorRegisterForm = false;
 
   userService = inject(UsersService);
 
   async registerUser(form: NgForm) {
     console.log(form.value)
-    this.errorRegister = false;
     if (
       !form.value.firstName ||
-      !form.value.lastName ||
+      form.value.lastName ||
       !form.value.email ||
       !form.value.password ||
       !form.value.password2 ||
       form.value.password !== form.value.password2
     ) {
-      this.errorRegister = true;
+      this.errorRegisterForm = true;
       return;
     }
-
     this.isLoading = true;
     const ok = await this.userService.registerUser({
       firstName: form.value.firstName,
@@ -41,8 +40,10 @@ export class RegisterPage {
     this.isLoading = false;
 
     if (!ok) {
-      this.errorRegister = true;
+      this.errorRegisterService = true;
     }
 
   }
+
+
 }

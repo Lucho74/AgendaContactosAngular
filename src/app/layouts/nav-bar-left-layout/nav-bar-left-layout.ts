@@ -13,7 +13,7 @@ export class NavBarLeftLayout {
 
   showLogoutModal(){
     Swal.fire({
-      title: "",
+      title: "¿Seguro que desea cerrar sesión?",
       showDenyButton: false,
       showCancelButton: true,
       confirmButtonColor: "red",

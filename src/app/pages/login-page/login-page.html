@@ -12,20 +12,11 @@
                 <input type="password" id="password" name="password" placeholder="Contraseña" ngModel required
                     #password="ngModel" minlength="8">
             </div>
-            <p class="p-error">
-                @if((email.dirty && email.invalid) || (password.dirty && password.invalid)){
-                Email o contraseña invalido
+            @if((email.dirty && email.invalid) || (password.dirty && password.invalid)){
+                <p class="error">Email o contraseña invalido</p>
                 }
-            </p>
-            <div class="checkbox-container">
-                <input type="checkbox" id="remember">
-                <label for="remember">Recordar cuenta</label>
-            </div>
-            <div class="flex-column">
-                <button>Acceder</button>
-            </div>
+            <button>Acceder</button>
         </form>
-        <p>¿Olvidaste tu contraseña? <a routerLink="/register">Recuperar cuenta</a></p>
         <p>¿No tienes cuenta? <a routerLink="/register">Registrate</a></p>
     </div>
 </section>

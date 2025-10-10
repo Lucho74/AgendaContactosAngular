@@ -31,10 +31,7 @@ h2{
 }
 
 
-label{
-    display: flex;
-    align-items: center;
-}
+
 
 input{
     background: transparent;
@@ -61,17 +58,6 @@ img{
     display: inline-block;
 }
 
-.label-checkbox{
-    display: flex;
-    justify-content: end;
-    align-items: center;
-    gap: 5px;
-    font-size: var(--font-size-checkbox);
-}
-.input-checkbox {
-    accent-color: var(--button-primary-color);
-    margin: 0;
-}
 
 button{
     background-color: var(--button-primary-color);
@@ -96,6 +82,3 @@ p{
     text-align: end;
 }
 
-.p-error{
-    visibility: hidden
-}
