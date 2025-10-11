@@ -1,6 +1,6 @@
 <section class="flex-column">
     <h1>Agenda de contactos</h1>
-    <div class="login-container flex-column">
+    <div class="container flex-column">
         <h2>Iniciar sesión</h2>
         <form (ngSubmit)="login(loginUserForm)" #loginUserForm="ngForm">
             <div>
@@ -12,10 +12,18 @@
                 <input type="password" id="password" name="password" placeholder="Contraseña" ngModel required
                     #password="ngModel" minlength="8">
             </div>
-            @if((email.dirty && email.invalid) || (password.dirty && password.invalid)){
+            @if((!email.pristine && email.invalid) || (!password.pristine && password.invalid) || errorLoginForm){
                 <p class="error">Email o contraseña invalido</p>
                 }
             <button>Acceder</button>
+            <div class="spinner">
+                @if (backRequest) {
+                    <app-spinner/>
+                }
+            </div>
+                @if (errorService) {
+                    <p class="error">Error indeterminado, intente nuevamente.</p>
+                }
         </form>
         <p>¿No tienes cuenta? <a routerLink="/register">Registrate</a></p>
     </div>
