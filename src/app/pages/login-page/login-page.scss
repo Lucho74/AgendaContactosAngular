@@ -78,7 +78,9 @@ button:hover{
 }
 button:active{
     color: var(--font-button-primary-active-color);
-
+}
+button:disabled{
+    background-color: var(--button-disabled-color);
 }
 
 p{

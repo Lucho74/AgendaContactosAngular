@@ -14,29 +14,29 @@
             </div>
             <div>
                 <label for="email">Email*</label>
-                <input name="email" id="email" type="text" placeholder="Email*" ngModel #email="ngModel" required="true"
-                    autocomplete="email">
+                <input name="email" id="email" type="email" placeholder="Email*" ngModel #email="ngModel" required="true"
+                    autocomplete="email" pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$">
             </div>
             <div>
                 <label for="password">Contraseña*</label>
-                <input name="password" id="password" type="password" placeholder="Contraseña*" ngModel
-                    #password="ngModel" autocomplete="new-password" required="true">
+                <input name="password" id="password" type="password" placeholder="Contraseña* (min. 4 caracteres)" ngModel
+                    #password="ngModel" autocomplete="new-password" required="true" minlength="4">
             </div>
             <div>
                 <label for="password2">Repetir Contraseña*</label>
                 <input name="password2" id="password2" type="password" placeholder="Repetir contraseña*" ngModel
                     #password2="ngModel" autocomplete="new-password" required="true">
             </div>
-            @if (!firstName.pristine && firstName.invalid || !email.pristine && email.invalid || !password.pristine &&
-            password.invalid || !password2.pristine && password2.invalid || errorRegisterForm) {
+            @if (
+            (!firstName.pristine && firstName.invalid) ||
+            (!email.pristine && email.invalid) ||
+            (!password.pristine && password.invalid) ||
+            (!password2.pristine && password2.invalid)) {
             <p class="error">* Completar campos obligatorios.</p>
             }
             @if (errorPasswords) {
             <p class="error">Las contraseñas no coinciden.</p>
             }
-            <div>
-                <button>Crear cuenta</button>
-            </div>
             <div class="spinner">
                 @if (backRequest) {
                     <app-spinner/>
@@ -45,6 +45,7 @@
                 @if (errorService) {
                     <p class="error">Error indeterminado, intente nuevamente.</p>
                 }
+            <button [disabled]="registerUserForm.invalid || backRequest">Crear cuenta</button>
         </form>
         <p>¿Ya tenés cuenta? <a routerLink="/login">Iniciar sesión</a></p>
     </div>

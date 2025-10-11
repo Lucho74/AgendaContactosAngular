@@ -18,14 +18,18 @@ export class LoginPage {
   authService = inject(AuthService)
   router = inject(Router)
 
-  errorLoginForm = false;
-  errorService = false;
+  error = false;
   backRequest = false;
 
   async login(form: NgForm) {
     console.log(form.value)
-    if (!form.value.email || !form.value.password) {
-      this.errorLoginForm = true;
+    this.error = false;
+
+    if (
+      !form.value.email ||
+      !form.value.password
+      ) {
+      this.error = true;
       return
     }
     this.backRequest = true;
@@ -33,7 +37,7 @@ export class LoginPage {
     this.backRequest = false;
 
     if (!ok) {
-      this.errorService = true;
+      this.error = true;
     } 
     else {
       this.router.navigate(["/"]);

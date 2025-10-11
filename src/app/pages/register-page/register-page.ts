@@ -15,7 +15,7 @@ export class RegisterPage {
   
   errorService = false;
   errorRegisterForm = false;
-  errorPasswords = false
+  errorPasswords = false;
   backRequest = false;
 
   userService = inject(UsersService);
@@ -23,18 +23,20 @@ export class RegisterPage {
 
   async registerUser(form: NgForm) {
     console.log(form.value)
+    this.errorRegisterForm = false;
+    this.errorPasswords = false;
+    this.errorService = false;
     if (
       !form.value.firstName ||
-      form.value.lastName ||
       !form.value.email ||
       !form.value.password ||
-      !form.value.password2
+      !form.value.password2 
     ) {
       this.errorRegisterForm = true;
       return;
     }
-    if (form.value.password !== form.value.password2
-    ){
+    
+    if (form.value.password !== form.value.password2){
       this.errorPasswords = true;
       return;
     }
@@ -49,6 +51,7 @@ export class RegisterPage {
 
     if (!ok) {
       this.errorService = true;
+      return
     }
     else {
       Swal.fire({
