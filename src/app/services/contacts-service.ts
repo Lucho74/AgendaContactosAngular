@@ -27,7 +27,23 @@ export class ContactsService {
     return resContact;
   }
 
-  editContact() { }
+    async editContact(contact:Contact){
+    const res = await fetch(this.URL_Base+"/"+contact.id+"edit", 
+      {
+        method:"PUT",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: "Bearer "+this.authService.token,
+        },
+        body: JSON.stringify(contact)
+      });
+    if(!res.ok) return;
+    this.contacts = this.contacts.map(oldContact =>{
+      if(oldContact.id === contact.id) return contact;
+      return oldContact
+    })
+    return contact;
+  }
 
   async deleteContact(id: number) {
     const res = await fetch(this.URL_Base + "/" + id,
@@ -80,11 +96,18 @@ export class ContactsService {
       {
         method: "POST",
         headers: {
-          "Content-Type": "application/json",
           Authorization: "Bearer " + this.authService.token,
         },
       });
     if (!res.ok) return;
+
+    this.contacts = this.contacts.map(contact => {
+      if(contact.id === id) {
+        return {...contact, isFavorite: !contact.isFavorite};
+      };
+      return contact;
+    });
+    return true;
 
   }
 }

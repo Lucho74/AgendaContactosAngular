@@ -8,6 +8,7 @@ section{
 
 .card{
     display: flex;
+    flex-direction: column;
     background-color: var(--background-secundary-color);
     border-radius: var(--border-radius);
     width: 100%;
@@ -55,7 +56,10 @@ p{
 } 
 
 .router-outlet-box{
-    transition: all 0.3s ease;
+    width: 50%;
+    height: 50%;
+    transition: all 10s ease;
+    margin: 25%;
 
 }
 
@@ -66,3 +70,4 @@ p{
 .half {
   flex: 1 1 50%;
 }
+

@@ -8,4 +8,4 @@
     </span>
 </p>
 <button (click)="contactsService.deleteContact(contact().id)">borrar</button>
-<a [routerLink]="['/contacts', contact().id, 'details']">detalles</a>
+<a [routerLink]="['/', contact().id, 'details']">detalles</a>

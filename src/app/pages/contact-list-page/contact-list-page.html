@@ -33,7 +33,7 @@
 
 <section>
     <div class="card">
-        <div class="contacts-box" [ngClass]="{ 'half': showRightBox, 'full': !showRightBox }">
+        <div class="contacts-box full">
             <div>
                 <h1>Contactos</h1>
             </div>
@@ -65,12 +65,9 @@
             @else {
                 <div class="no-contacts-div">
                     <p>No hay contactos</p>
-                    <a routerLink="/contacts/add" (click)="toggleRightBox()">Agrega tu primer contacto</a>
+                    <a routerLink="/add">Agrega tu primer contacto</a>
                 </div>
             }
-        </div>
-        <div class="router-outlet-box" *ngIf="showRightBox">
-            <router-outlet />
         </div>
     </div>
 </section>

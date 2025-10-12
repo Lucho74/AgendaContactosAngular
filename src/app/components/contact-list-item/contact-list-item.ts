@@ -18,12 +18,7 @@ export class ContactListItem {
   contactsService = inject(ContactsService)
 
   markUnmarkFavorite() {
-    if(this.contact().isFavorite){
-      this.contact().isFavorite = false
-    }
-    else {
-      this.contact().isFavorite = true
-    }
+
     this.contactsService.markUnmarkFavorite(this.contact().id)
   }
 

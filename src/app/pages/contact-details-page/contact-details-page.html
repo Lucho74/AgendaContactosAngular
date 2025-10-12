@@ -1,6 +1,9 @@
 <section>
     <div>
-        <a routerLink="/contacts">X</a>
+        <a routerLink="/">X</a>
+    </div>
+    <div>
+        <a [routerLink]="['/', idContact() ,'edit']">Editar</a>
     </div>
     <div>
         <img src={{contactBack?.image}} alt="">

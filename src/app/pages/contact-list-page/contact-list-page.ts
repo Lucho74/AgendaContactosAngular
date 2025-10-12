@@ -5,7 +5,7 @@ import { ContactsService } from '../../services/contacts-service';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { Contact } from '../../interfaces/contact';
-import { ActionsService } from '../../services/actions-service';
+
 
 @Component({
   selector: 'app-contact-list-page',
@@ -15,7 +15,6 @@ import { ActionsService } from '../../services/actions-service';
 })
 export class ContactListPage implements OnInit {
   
-  actionsService = inject(ActionsService)
   contactsService = inject(ContactsService)
   addContact = false
   contacts: Contact[] | void= []
@@ -32,15 +31,8 @@ async ngOnInit() {
     this.addContact = false
   }
 
-  // showRightBox = false;
-  
-  showRightBox = this.actionsService.showRightBox
-  toggleRightBox() {
-    this.actionsService.toggleRightBox();
-    this.showRightBox = this.actionsService.showRightBox
-    console.log(this.showRightBox);
-    
-  }
+
+
 
 
 

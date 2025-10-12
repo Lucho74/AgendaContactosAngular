@@ -7,7 +7,7 @@ import { NavBarLeftLayout } from './layouts/nav-bar-left-layout/nav-bar-left-lay
 import { GroupListPage } from './pages/group-list-page/group-list-page';
 import { onlyUserGuard } from './guards/only-user-guard';
 import { onlyPublicGuard } from './guards/only-public-guard';
-import { AddContactPage } from './pages/add-contact-page/add-contact-page';
+import { NewEditContactPage } from './pages/new-edit-contact-page/new-edit-contact-page';
 
 export const routes: Routes = [
 
@@ -30,18 +30,20 @@ export const routes: Routes = [
         children: [
             {
                 // Path vacío se abre cuando la pagina no tiene url más que localhost
-                path: "contacts",
+                path: "",
                 component: ContactListPage,
-                children: [
-                    {
-                        path: ":idContact/details",
-                        component: ContactDetailsPage
-                    },
-                    {
-                        path: "add",
-                        component: AddContactPage
-                    },
-                ]
+            },
+            {
+                path: "add",
+                component: NewEditContactPage
+            },
+            {
+                path: ":idContact/details",
+                component: ContactDetailsPage
+            },
+            {
+                path: ":idContact/edit",
+                component: NewEditContactPage
             },
             {
                 path: "groups",
