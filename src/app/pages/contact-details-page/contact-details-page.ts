@@ -14,7 +14,7 @@ export class ContactDetailsPage implements OnInit {
 
   contactService = inject(ContactsService)
   idContact = input.required<string>()
-  contactBack: Contact | undefined = undefined;
+  contactBack: Contact | undefined;
 
   async ngOnInit() {
     if (this.idContact()) {
@@ -23,6 +23,11 @@ export class ContactDetailsPage implements OnInit {
     }
     console.log(this.idContact());
     
+  }
+
+  markUnmarkFavorite(){
+    this.contactService.markUnmarkFavorite(this.contactBack!.id)
+    this.contactBack!.isFavorite = !this.contactBack?.isFavorite
   }
 
 }

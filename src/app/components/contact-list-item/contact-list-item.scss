@@ -1,0 +1,9 @@
+.clean {
+  all: unset;        
+  cursor: pointer;
+  display: inline-block;
+}
+
+svg{
+    fill: var(--nav-bar-left-color);
+}

@@ -40,7 +40,7 @@ export class ContactsService {
     if(!res.ok) return;
     this.contacts = this.contacts.map(oldContact =>{
       if(oldContact.id === contact.id) return contact;
-      return oldContact
+      return oldContact;
     })
     return contact;
   }
@@ -91,7 +91,7 @@ export class ContactsService {
     return null
   }
 
-  async markUnmarkFavorite(id: number) {
+  async markUnmarkFavorite(id: number | string) {
     const res = await fetch(this.URL_Base+"/"+id+"/favorite",
       {
         method: "POST",
