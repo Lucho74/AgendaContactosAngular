@@ -2,7 +2,12 @@
 
     <div class="card">
         <div>
-            <h1>Agregar contacto</h1>
+            @if(idContact()){
+            <h1>Editar contacto</h1>
+            }
+            @else {
+            <h1>Nuevo contacto</h1>
+            }
         </div>
         <div class="form-container">
             <form (ngSubmit)="handleFormSubmission(newContactForm)" #newContactForm="ngForm">
@@ -44,8 +49,8 @@
                     <input id="image" name="image" type="text" ngModel minlength="10">
                 </div>
                 <div>
-                    <label for="favourite">Favorito</label>
-                    <input id="favourite" name="isFavourite" type="checkbox" ngModel>
+                    <label for="favorite">Favorito</label>
+                    <input id="favorite" name="isFavorite" type="checkbox" ngModel>
                 </div>
                 <button [disabled]="newContactForm.invalid">Agregar</button>
             </form>

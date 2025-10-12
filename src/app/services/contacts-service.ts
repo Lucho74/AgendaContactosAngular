@@ -28,7 +28,7 @@ export class ContactsService {
   }
 
     async editContact(contact:Contact){
-    const res = await fetch(this.URL_Base+"/"+contact.id+"edit", 
+    const res = await fetch(this.URL_Base+"/"+contact.id, 
       {
         method:"PUT",
         headers: {

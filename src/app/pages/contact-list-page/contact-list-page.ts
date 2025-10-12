@@ -23,13 +23,6 @@ async ngOnInit() {
   this.contacts = await this.contactsService.getContacts()
 }
 
-  showAddContact() {
-    this.addContact = true
-    console.log('click')
-  }
-  hiddenAddContact() {
-    this.addContact = false
-  }
 
 
 

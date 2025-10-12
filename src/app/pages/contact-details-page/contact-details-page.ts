@@ -10,19 +10,19 @@ import { ContactsService } from '../../services/contacts-service';
   styleUrl: './contact-details-page.scss'
 
 })
-export class ContactDetailsPage implements OnChanges {
+export class ContactDetailsPage implements OnInit {
 
-  contactsService = inject(ContactsService)
-  idContact = input<string>()
+  contactService = inject(ContactsService)
+  idContact = input.required<string>()
   contactBack: Contact | undefined = undefined;
 
-  async ngOnChanges() {
-    if(this.idContact()){
-      const contact:Contact | null = await this.contactsService.getContactById(this.idContact()!)
-      if(contact){
-        this.contactBack = contact
-      }
+  async ngOnInit() {
+    if (this.idContact()) {
+      const res = await this.contactService.getContactById(this.idContact());
+      if (res) this.contactBack = res;
     }
+    console.log(this.idContact());
+    
   }
 
 }

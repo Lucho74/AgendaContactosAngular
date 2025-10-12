@@ -29,17 +29,19 @@ export class NewEditContactPage {
   //   this.contactsService.createContact(newContact)
   // }
 
-  contactsService = inject(ContactsService);
+  contactService = inject(ContactsService);
   router = inject(Router)
   errorEnBack = false;
-  idContacto = input<string>();
+  idContact = input<string>();
   contactoBack:Contact | undefined = undefined;
   form = viewChild<NgForm>("newContactForm");
   solicitudABackEnCurso = false;
   
   async ngOnInit() {
-    if(this.idContacto()){
-      const contacto:Contact|null = await this.contactsService.getContactById(this.idContacto()!);
+    console.log(this.idContact());
+    
+    if(this.idContact()){
+      const contacto:Contact|null = await this.contactService.getContactById(this.idContact()!);
       if(contacto){
         this.contactoBack = contacto;
         this.form()?.setValue({
@@ -48,7 +50,7 @@ export class NewEditContactPage {
           email: contacto.email,
           firstName:contacto.firstName,
           image:contacto.image,
-          isFavourite:contacto.isFavorite,
+          isFavorite:contacto.isFavorite,
           lastName: contacto.lastName,
           number: contacto.number
         })
@@ -66,15 +68,15 @@ export class NewEditContactPage {
       image: form.value.image,
       number: form.value.number,
       company: form.value.company,
-      isFavorite: form.value.iFavorite
+      isFavorite: form.value.isFavorite
     }
 
     this.solicitudABackEnCurso = true;
     let res;
-    if(this.idContacto()){
-      res = await this.contactsService.editContact({...nuevoContacto,id:this.contactoBack!.id});
+    if(this.idContact()){
+      res = await this.contactService.editContact({...nuevoContacto,id:this.contactoBack!.id});
     } else {
-      res = await this.contactsService.createContact(nuevoContacto);
+      res = await this.contactService.createContact(nuevoContacto);
     }
     this.solicitudABackEnCurso = false;
 
@@ -82,6 +84,7 @@ export class NewEditContactPage {
       this.errorEnBack = true;
       return
     };
+    
     this.router.navigate(["/"]);
   }
 
