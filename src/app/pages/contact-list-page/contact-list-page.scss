@@ -115,3 +115,24 @@ input:focus {
     max-height: 24px;
 }
 }
+
+@media (max-width: 400px) {
+  section {
+    height: 100vh;
+    overflow-x: hidden;
+    overflow-y: hidden;  
+    width: 100%;
+  }
+
+  .container{
+    height: 100%;
+    width: 100%;
+}
+    input{
+        width: 100%;
+    }
+        .search-container{
+        padding-left: 0;
+        padding-right: 0;
+    }
+}

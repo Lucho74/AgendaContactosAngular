@@ -9,7 +9,9 @@ section{
     align-items: center;
     background-color: var(--nav-bar-left-color);
     width: 200px;
-    padding: 5vh 2vw;
+    padding: 32px 24px;
+    box-sizing: border-box;
+    left: -216px;
 }
 
 h1{
@@ -60,18 +62,49 @@ nav {
     height: 100%;
 }
 
+.menu-button {
+    display: none;
+    position: absolute;
+    bottom: 32px;
+    left: 248px;
+    z-index: 10;
+    background-color: var(--nav-bar-left-color);
+    border-radius: var(--border-radius);
+    padding: 8px;
+    fill: var(--font-button-primary-color);
+    border: 0;
+}
+
+.menu-button:hover {
+    background-color: var(--button-primary-hover-color);
+}
+
+.menu-no-hidden{
+    left: 0px;
+    .menu-button{
+            left: 224px;
+    }
+}
+
 
 @media (max-width: 480px) {
   .nav-bar-section {
-    display: none;
-    padding: 0;
-    margin-left: 0;
-    height: 100vh;
-    overflow-x: hidden; /* corta lo horizontal */
-  overflow-y: hidden; 
+    position: absolute;
+    height: 100%;
+    .menu-button {
+    display:inline-block;
+
+}
+
+
+
   }
   .main-section{
     height: 100vh;
     width: 100%;
   }
 }
+
+
+
+

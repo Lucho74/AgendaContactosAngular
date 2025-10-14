@@ -26,6 +26,12 @@ export class NavBarLeftLayout {
       }
     });
   }
+
+  menuHidden = false;
+  toggleMenu() {
+  this.menuHidden= !this.menuHidden;
+
+}
 }
 
 
