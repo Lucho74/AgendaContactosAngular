@@ -16,7 +16,7 @@ import { Contact } from '../../interfaces/contact';
 export class ContactListPage implements OnInit {
 
   // search = document.getElementById("search")
-  search = "rew"
+  search = document.getElementById("search")
 
   
   contactsService = inject(ContactsService)
