@@ -4,6 +4,7 @@ import { ContactsService } from '../../services/contacts-service';
 import { FormsModule, NgForm } from '@angular/forms';
 import { Router, RouterModule } from '@angular/router';
 import { Spinner } from '../../components/spinner/spinner';
+import { concatAll } from 'rxjs';
 
 
 @Component({
@@ -21,6 +22,8 @@ export class NewEditContactPage {
   contactBack:Contact | undefined = undefined;
   form = viewChild<NgForm>("newContactForm");
   backRequest = false;
+  img: string = "";
+  imgURL = "https://cdn.pixabay.com/photo/2023/02/18/11/00/icon-7797704_1280.png";
   
   async ngOnInit() {
     console.log(this.idContact());
@@ -36,7 +39,7 @@ export class NewEditContactPage {
           number: contact.number,
           email: contact.email,
           address: contact.address,
-          image:contact.image,
+          image: contact.image,
           isFavorite:contact.isFavorite
         })
       }
@@ -45,6 +48,8 @@ export class NewEditContactPage {
 
   async handleFormSubmission(form:NgForm){
     this.errorBack = false;
+
+
     const newContact: NewContact ={
       firstName: form.value.firstName,
       lastName: form.value.lastName,

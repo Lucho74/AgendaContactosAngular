@@ -15,16 +15,22 @@ import { Contact } from '../../interfaces/contact';
 })
 export class ContactListPage implements OnInit {
 
-  // search = document.getElementById("search")
-  search = document.getElementById("search")
 
-  
   contactsService = inject(ContactsService)
-  addContact = false
   contacts: Contact[] | void= []
 
 async ngOnInit() {   
-  this.contacts = await this.contactsService.getContacts(this.search)
+  this.contacts = await this.contactsService.getContacts()
+}
+
+
+async search(text: string){
+  this.contacts = await this.contactsService.getContacts(text)
+
+}
+
+async favoriteContacts(){
+  
 }
 
 

@@ -27,19 +27,19 @@ export class ContactsService {
     return resContact;
   }
 
-    async editContact(contact:Contact){
-    const res = await fetch(this.URL_Base+"/"+contact.id, 
+  async editContact(contact: Contact) {
+    const res = await fetch(this.URL_Base + "/" + contact.id,
       {
-        method:"PUT",
+        method: "PUT",
         headers: {
           "Content-Type": "application/json",
-          Authorization: "Bearer "+this.authService.token,
+          Authorization: "Bearer " + this.authService.token,
         },
         body: JSON.stringify(contact)
       });
-    if(!res.ok) return;
-    this.contacts = this.contacts.map(oldContact =>{
-      if(oldContact.id === contact.id) return contact;
+    if (!res.ok) return;
+    this.contacts = this.contacts.map(oldContact => {
+      if (oldContact.id === contact.id) return contact;
       return oldContact;
     })
     return contact;
@@ -61,7 +61,7 @@ export class ContactsService {
     return true;
   }
 
-  async getContacts(search: string | any) {
+  async getContacts(search = "") {
 
     const res = await fetch(this.URL_Base,
       {
@@ -73,8 +73,9 @@ export class ContactsService {
     )
     if (res.ok) {
       const resJason: Contact[] = await res.json()
-      if(search){
-        this.contacts = resJason.filter(contact => contact.firstName.toLowerCase().startsWith(search.toLowerCase()))
+      if (search) {
+        this.contacts = resJason.filter(
+          contact => contact.firstName.toLowerCase().startsWith(search.toLowerCase()))
       }
       else {
         this.contacts = resJason
@@ -99,7 +100,7 @@ export class ContactsService {
   }
 
   async markUnmarkFavorite(id: number | string) {
-    const res = await fetch(this.URL_Base+"/"+id+"/favorite",
+    const res = await fetch(this.URL_Base + "/" + id + "/favorite",
       {
         method: "POST",
         headers: {
@@ -109,8 +110,8 @@ export class ContactsService {
     if (!res.ok) return;
 
     this.contacts = this.contacts.map(contact => {
-      if(contact.id === id) {
-        return {...contact, isFavorite: !contact.isFavorite};
+      if (contact.id === id) {
+        return { ...contact, isFavorite: !contact.isFavorite };
       };
       return contact;
     });
