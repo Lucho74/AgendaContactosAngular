@@ -1,7 +1,7 @@
 import { Component, inject, input } from '@angular/core';
 import { Contact } from '../../interfaces/contact';
 import { ContactsService } from '../../services/contacts-service';
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import { ContactDetailsPage } from "../../pages/contact-details-page/contact-details-page";
 
 @Component({
@@ -14,12 +14,21 @@ export class ContactListItem {
 
   contact = input.required<Contact>();
   index = input.required<number>();
+  router = inject(Router);
+  contactService = inject(ContactsService)
 
-  contactsService = inject(ContactsService)
+    async markUnmarkFavorite(){
+    if(this.contact()){
+      const res = await this.contactService.markUnmarkFavorite(this.contact().id);
+      if(res) this.contact().isFavorite = !this.contact().isFavorite;
+    }
+  }
 
-  markUnmarkFavorite() {
-
-    this.contactsService.markUnmarkFavorite(this.contact().id)
+    async deleteContact(){
+    if(this.contact()){
+    const res = await this.contactService.deleteContact(this.contact().id);
+    if(res) this.router.navigate(['/']);
+    }
   }
 
 }

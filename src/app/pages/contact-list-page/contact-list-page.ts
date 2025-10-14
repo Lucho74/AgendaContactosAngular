@@ -14,25 +14,19 @@ import { Contact } from '../../interfaces/contact';
   styleUrl: './contact-list-page.scss'
 })
 export class ContactListPage implements OnInit {
+
+  // search = document.getElementById("search")
+  search = "rew"
+
   
   contactsService = inject(ContactsService)
   addContact = false
   contacts: Contact[] | void= []
 
-async ngOnInit() {
-  this.contacts = await this.contactsService.getContacts()
+async ngOnInit() {   
+  this.contacts = await this.contactsService.getContacts(this.search)
 }
 
-
-
-
-
-
-
-
-
-
-  
 
 
 

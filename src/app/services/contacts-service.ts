@@ -57,10 +57,12 @@ export class ContactsService {
     if (!res.ok) {
       return
     }
-    this.contacts = this.contacts.filter(contact => contact.id !== id);
+    this.contacts = this.contacts.filter(contact => contact.id !== id)
+    return true;
   }
 
-  async getContacts() {
+  async getContacts(search: string | any) {
+
     const res = await fetch(this.URL_Base,
       {
         method: "GET",
@@ -71,7 +73,12 @@ export class ContactsService {
     )
     if (res.ok) {
       const resJason: Contact[] = await res.json()
-      this.contacts = resJason
+      if(search){
+        this.contacts = resJason.filter(contact => contact.firstName.toLowerCase().startsWith(search.toLowerCase()))
+      }
+      else {
+        this.contacts = resJason
+      }
     }
   }
 

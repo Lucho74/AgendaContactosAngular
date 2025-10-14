@@ -1,6 +1,12 @@
 <section>
 
     <div class="card">
+        <a routerLink="/">
+            <svg xmlns="http://www.w3.org/2000/svg" height="100px" viewBox="0 0 24 24" width="100px">
+                <path d="M0 0h24v24H0V0z" fill="none" />
+                <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z" />
+            </svg>
+        </a>
         <div>
             @if(idContact()){
             <h1>Editar contacto</h1>
@@ -48,11 +54,17 @@
                     <label for="image">URL Imagen</label>
                     <input id="image" name="image" type="text" ngModel minlength="10">
                 </div>
-                <button [disabled]="newContactForm.invalid">Agregar</button>
+                <div class="spinner">
+                    @if (backRequest) {
+                    <app-spinner />
+                    }
+                </div>
+                @if(idContact()){
+                <button [disabled]="newContactForm.invalid || backRequest">Editar</button>
+                } @else {
+                <button [disabled]="newContactForm.invalid || backRequest">Agregar</button>
+                }
             </form>
-        </div>
-        <div>
-            <a routerLink="/">Cerrar</a>
         </div>
     </div>
 </section>

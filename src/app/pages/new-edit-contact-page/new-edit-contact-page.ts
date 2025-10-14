@@ -3,64 +3,49 @@ import { Contact, NewContact } from '../../interfaces/contact';
 import { ContactsService } from '../../services/contacts-service';
 import { FormsModule, NgForm } from '@angular/forms';
 import { Router, RouterModule } from '@angular/router';
+import { Spinner } from '../../components/spinner/spinner';
 
 
 @Component({
   selector: 'app-new-edit-contact-page',
-  imports: [FormsModule, RouterModule],
+  imports: [FormsModule, RouterModule, Spinner],
   templateUrl: './new-edit-contact-page.html',
   styleUrl: './new-edit-contact-page.scss'
 })
 export class NewEditContactPage {
-  // contactsService = inject(ContactsService)
-
-  // createContact(form: any) {
-
-  //   const newContact: NewContact = {
-  //     firstName: form.firstName,
-  //     lastName: form.lastName,
-  //     address: form.address,
-  //     email: form.email,
-  //     number: form.number,
-  //     company: form.company,
-  //     description: form.description,
-  //     image: form.image
-  //   }
-  //   this.contactsService.createContact(newContact)
-  // }
 
   contactService = inject(ContactsService);
   router = inject(Router)
-  errorEnBack = false;
+  errorBack = false;
   idContact = input<string>();
-  contactoBack:Contact | undefined = undefined;
+  contactBack:Contact | undefined = undefined;
   form = viewChild<NgForm>("newContactForm");
-  solicitudABackEnCurso = false;
+  backRequest = false;
   
   async ngOnInit() {
     console.log(this.idContact());
     
     if(this.idContact()){
-      const contacto:Contact|null = await this.contactService.getContactById(this.idContact()!);
-      if(contacto){
-        this.contactoBack = contacto;
+      const contact:Contact|null = await this.contactService.getContactById(this.idContact()!);
+      if(contact){
+        this.contactBack = contact;
         this.form()?.setValue({
-          address: contacto.address,
-          company: contacto.company,
-          email: contacto.email,
-          firstName:contacto.firstName,
-          image:contacto.image,
-          isFavorite:contacto.isFavorite,
-          lastName: contacto.lastName,
-          number: contacto.number
+          address: contact.address,
+          company: contact.company,
+          email: contact.email,
+          firstName:contact.firstName,
+          image:contact.image,
+          isFavorite:contact.isFavorite,
+          lastName: contact.lastName,
+          number: contact.number
         })
       }
     }
   }
 
   async handleFormSubmission(form:NgForm){
-    this.errorEnBack = false;
-    const nuevoContacto: NewContact ={
+    this.errorBack = false;
+    const newContact: NewContact ={
       firstName: form.value.firstName,
       lastName: form.value.lastName,
       address: form.value.address,
@@ -71,17 +56,18 @@ export class NewEditContactPage {
       isFavorite: form.value.isFavorite
     }
 
-    this.solicitudABackEnCurso = true;
+    this.backRequest = true;
     let res;
+
     if(this.idContact()){
-      res = await this.contactService.editContact({...nuevoContacto,id:this.contactoBack!.id});
+      res = await this.contactService.editContact({...newContact,id:this.contactBack!.id});
     } else {
-      res = await this.contactService.createContact(nuevoContacto);
+      res = await this.contactService.createContact(newContact);
     }
-    this.solicitudABackEnCurso = false;
+    this.backRequest = false;
 
     if(!res) {
-      this.errorEnBack = true;
+      this.errorBack = true;
       return
     };
     
