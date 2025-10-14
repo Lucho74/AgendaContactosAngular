@@ -27,32 +27,32 @@
                 </div>
                 <div>
                     <label for="last-name">Apellido</label>
-                    <input type="text" name="lastName" id="last-name" ngModel maxlength="20">
+                    <input type="text" name="lastName" id="last-name" ngModel maxlength="20" #lastName="ngModel">
                 </div>
                 <div>
                     <label for="number">Telefono*</label>
                     <input type="text" name="number" id="number" ngModel maxlength="50" required="true" minlength="4"
-                        #phone="ngModel">
-                    @if (phone.dirty && phone.invalid) {
+                        #number="ngModel">
+                    @if (number.dirty && number.invalid) {
                     <p class="error">El telefono es obligatorio y tiene que tener al menos 4 caracteres y no mas de 50
                     </p>
                     }
                 </div>
                 <div>
                     <label for="email">Email</label>
-                    <input type="email" name="email" id="email" ngModel maxlength="40">
+                    <input type="email" name="email" id="email" ngModel maxlength="40" #email="ngModel">
                 </div>
                 <div>
                     <label for="address">Dirección</label>
-                    <input type="text" name="address" id="address" ngModel maxlength="50">
+                    <input type="text" name="address" id="address" ngModel maxlength="50" #address="ngModel">
                 </div>
                 <div>
                     <label for="company">Companía</label>
-                    <input id="company" name="company" type="text" ngModel minlength="2">
+                    <input id="company" name="company" type="text" ngModel minlength="2" #company="ngModel">
                 </div>
                 <div>
                     <label for="image">URL Imagen</label>
-                    <input id="image" name="image" type="text" ngModel minlength="10">
+                    <input id="image" name="image" type="text" ngModel minlength="10" #image="ngModel">
                 </div>
                 <div class="spinner">
                     @if (backRequest) {

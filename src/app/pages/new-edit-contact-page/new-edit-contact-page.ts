@@ -30,14 +30,14 @@ export class NewEditContactPage {
       if(contact){
         this.contactBack = contact;
         this.form()?.setValue({
-          address: contact.address,
-          company: contact.company,
-          email: contact.email,
           firstName:contact.firstName,
-          image:contact.image,
-          isFavorite:contact.isFavorite,
           lastName: contact.lastName,
-          number: contact.number
+          company: contact.company,
+          number: contact.number,
+          email: contact.email,
+          address: contact.address,
+          image:contact.image,
+          isFavorite:contact.isFavorite
         })
       }
     }
