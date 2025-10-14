@@ -7,7 +7,7 @@ import { AuthService } from './auth-service';
 })
 export class ContactsService {
 
-  readonly URL_Base = "https:/agenda-api.somee.com/api/contacts"
+  readonly URL_Base = "https://agenda-api.somee.com/api/contacts"
   contacts: Contact[] = []
   authService = inject(AuthService)
 
