@@ -61,3 +61,17 @@ nav {
 }
 
 
+@media (max-width: 480px) {
+  .nav-bar-section {
+    display: none;
+    padding: 0;
+    margin-left: 0;
+    height: 100vh;
+    overflow-x: hidden; /* corta lo horizontal */
+  overflow-y: hidden; 
+  }
+  .main-section{
+    height: 100vh;
+    width: 100%;
+  }
+}
