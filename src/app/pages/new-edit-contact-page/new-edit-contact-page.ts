@@ -40,7 +40,6 @@ export class NewEditContactPage {
           email: contact.email,
           address: contact.address,
           image: contact.image,
-          isFavorite:contact.isFavorite
         })
       }
     }
@@ -58,7 +57,7 @@ export class NewEditContactPage {
       image: form.value.image,
       number: form.value.number,
       company: form.value.company,
-      isFavorite: form.value.isFavorite
+      isFavorite: false
     }
 
     this.backRequest = true;
