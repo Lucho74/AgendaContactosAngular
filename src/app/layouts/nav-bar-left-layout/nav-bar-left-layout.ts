@@ -2,6 +2,7 @@ import { Component, inject } from '@angular/core';
 import { RouterModule, } from '@angular/router';
 import { AuthService } from '../../services/auth-service';
 import Swal from 'sweetalert2';
+import { UsersService } from '../../services/users-service';
 
 @Component({
   selector: 'app-nav-bar-left-layout',

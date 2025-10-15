@@ -45,7 +45,15 @@
                 </a> -->
                 </nav>
             </div>
-            <button class="loguot-button clean " (click)="showLogoutModal()">Cerrar sesión</button>
+            <div class="width100">
+                <p>
+                    Usuario:
+                </p>
+                <p>
+                    {{authService.userLogged?.userName}}
+                </p>
+                <button class="loguot-button clean " (click)="showLogoutModal()">Cerrar sesión</button>
+            </div>
 
         </div>
         <button class="menu-button clean" (click)="toggleMenu()">

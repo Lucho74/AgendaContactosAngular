@@ -7,6 +7,7 @@ import { CommonModule } from '@angular/common';
 import { Contact } from '../../interfaces/contact';
 import { Spinner } from "../../components/spinner/spinner";
 import { TestRequest } from '@angular/common/http/testing';
+import { UsersService } from '../../services/users-service';
 
 
 @Component({
@@ -27,7 +28,6 @@ async ngOnInit() {
   await this.contactsService.getContacts()
   this.contacts = this.contactsService.contacts
   this.backRequest = false
-
 }
 
 

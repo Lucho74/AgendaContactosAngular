@@ -13,5 +13,12 @@ export interface NewUser {
     password: string
 }
 
+export interface UserLogged {
+    id: number,
+    firstName: string,
+    lastName: string,
+    userName: string,
+}
+
 
 

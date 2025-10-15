@@ -1,4 +1,4 @@
-import { inject, Injectable} from '@angular/core';
+import { inject, Injectable, OnInit} from '@angular/core';
 import { User, NewUser } from '../interfaces/user';
 import { AuthService } from './auth-service';
 
@@ -7,10 +7,12 @@ import { AuthService } from './auth-service';
 })
 export class UsersService {
 
+
   authService = inject(AuthService)
   
   Users: User[] = []
   NewUsers: NewUser[] = []
+  
 
   createUser(newUser: NewUser){
     this.NewUsers.push(newUser)
@@ -33,5 +35,7 @@ export class UsersService {
     return res.ok;
     
   }
+
+  
 }
 

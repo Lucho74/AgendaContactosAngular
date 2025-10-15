@@ -1,22 +1,31 @@
 import { inject, Injectable, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Auth } from '../interfaces/auth';
+import { UserLogged } from '../interfaces/user';
 
 @Injectable({
   providedIn: 'root'
 })
-export class AuthService implements OnInit {
+export class AuthService {
 
-  ngOnInit(): void {
+  constructor() {
     // Si tengo sesion iniciada reviso que no este vencida
     if (this.token) {
       this.revisionTokenInterval = this.revisionToken()
     }
+    this.me()
+    
+    
+
+
+
   }
+
 
   token: null | string = localStorage.getItem("token");
   revisionTokenInterval:number|undefined;
   router = inject(Router);
+  userLogged: UserLogged | undefined
 
   async login(loginData: Auth) {
     const res = await fetch('https://agenda-api.somee.com/api/authentication/authenticate',
@@ -58,4 +67,19 @@ export class AuthService implements OnInit {
       }
     }, 600)
   }
+
+  async me( ) {
+    const res = await fetch('https://agenda-api.somee.com/api/Users/me',
+        {
+          method: "GET",
+          headers: {
+            Authorization: 'Bearer ' + this.token,
+          }
+        }
+      )
+      if(res.ok){
+        this.userLogged = await res.json()
+      }
+      
+    }
 }
