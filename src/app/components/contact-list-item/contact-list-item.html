@@ -1,10 +1,16 @@
 <div class="card">
     <a [routerLink]="['/', contact().id, 'details']">
         <div class="header">
-            <div>
-
-                <img src="{{contact().image}}" alt="" width="24px" height="24px">
-            </div>
+            @if (contact().image === "") {
+                <div>
+                    <img src="https://images.icon-icons.com/3446/PNG/512/account_profile_user_avatar_icon_219236.png" alt="" width="40px" height="40px">
+                </div>
+            }
+            @else {
+                <div>
+                    <img src="{{contact().image}}" alt="" width="40px" height="40px">
+                </div>    
+            }
             <div class="caja">
                 <div class="text-align-left">
                     {{contact().firstName}} {{contact().lastName}}
@@ -49,7 +55,7 @@
                     d="M14.06 9.02l.92.92L5.92 19H5v-.92l9.06-9.06M17.66 3c-.25 0-.51.1-.7.29l-1.83 1.83 3.75 3.75 1.83-1.83c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.2-.2-.45-.29-.71-.29zm-3.6 3.19L3 17.25V21h3.75L17.81 9.94l-3.75-3.75z" />
             </svg>
         </a>
-        <button class="clean" (click)="deleteContact()">
+        <button class="clean" (click)="showDeleteModal()">
             <svg xmlns="http://www.w3.org/2000/svg" height="100px" viewBox="0 -960 960 960" width="100px" fill="red">
                 <path
                     d="M280-120q-33 0-56.5-23.5T200-200v-520h-40v-80h200v-40h240v40h200v80h-40v520q0 33-23.5 56.5T680-120H280Zm400-600H280v520h400v-520ZM360-280h80v-360h-80v360Zm160 0h80v-360h-80v360ZM280-720v520-520Z" />

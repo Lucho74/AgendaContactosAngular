@@ -61,7 +61,7 @@ export class ContactsService {
     return true;
   }
 
-  async getContacts(search = "") {
+  async getContacts(search = "", favs = false) {
 
     const res = await fetch(this.URL_Base,
       {
@@ -78,10 +78,18 @@ export class ContactsService {
           contact => contact.firstName.toLowerCase().startsWith(search.toLowerCase()))
       }
       else {
-        this.contacts = resJason
+        if (favs){
+          this.contacts = resJason.filter(
+          contact => contact.isFavorite == true)
+        }
+        else{
+          this.contacts = resJason
+        }
       }
     }
   }
+
+
 
   async getContactById(id: string | number) {
     const res = await fetch(this.URL_Base + "/" + id,

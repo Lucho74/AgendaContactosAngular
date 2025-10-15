@@ -1,0 +1,29 @@
+<section>
+    <div class="card">
+        <div>
+            <h1>Favoritos</h1>
+        </div>
+        @if (backRequest) {
+        <div class="spinner">
+            <app-spinner />
+        </div>
+        }
+        @else {
+
+        @if (contactsService.contacts.length != 0) {
+        <div>
+            @for (contact of contactsService.contacts; track $index) {
+            <app-contact-list-item [contact]="contact" [index]="$index" />
+            }
+        </div>
+
+
+        }
+        @else {
+        <div class="no-contacts-div">
+            <p>No hay contactos favoritos</p>
+        </div>
+        }
+        }
+    </div>
+</section>

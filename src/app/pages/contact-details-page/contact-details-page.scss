@@ -53,6 +53,7 @@ svg{
 
 img{
     margin-bottom: 16px;
+    border-radius: 100px;
 }
 
 h1{
@@ -90,4 +91,10 @@ h2{
     font-size: 12px;
 }
 
+.spinner{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
 

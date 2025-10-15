@@ -2,21 +2,23 @@ import { Component, inject } from '@angular/core';
 import { RouterModule, } from '@angular/router';
 import { AuthService } from '../../services/auth-service';
 import Swal from 'sweetalert2';
+
 @Component({
   selector: 'app-nav-bar-left-layout',
-  imports: [ RouterModule ],
+  imports: [RouterModule],
   templateUrl: './nav-bar-left-layout.html',
   styleUrl: './nav-bar-left-layout.scss'
 })
 export class NavBarLeftLayout {
   authService = inject(AuthService)
 
-  showLogoutModal(){
+  showLogoutModal() {
     Swal.fire({
-      title: "¿Seguro que desea cerrar sesión?",
+      title: "¿Seguro que quiere cerrar sesión?",
       showDenyButton: false,
       showCancelButton: true,
       confirmButtonColor: "red",
+      cancelButtonColor: "var(--nav-bar-left-color)",
       cancelButtonText: "Cancelar",
       confirmButtonText: "Cerrar sesión",
     }).then((result) => {
@@ -29,9 +31,9 @@ export class NavBarLeftLayout {
 
   menuHidden = false;
   toggleMenu() {
-  this.menuHidden= !this.menuHidden;
+    this.menuHidden = !this.menuHidden;
 
-}
+  }
 }
 
 

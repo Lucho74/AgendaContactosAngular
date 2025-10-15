@@ -55,7 +55,7 @@ export class RegisterPage {
     }
     else {
       Swal.fire({
-        title: "¡Registro exitoso!",
+        title: "¡Cuenta creada correctamente!",
         showDenyButton: false,
         showCancelButton: false,
         confirmButtonColor: "var(--button-primary-color)",
